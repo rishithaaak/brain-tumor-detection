@@ -4,15 +4,6 @@ This repository implements a multi-class deep learning pipeline to identify and 
 
 The goal is to develop a reliable, automated assistance tool for computer-aided diagnosis in medical imaging workflows.
 
----
-
-## Technical Stack
-* **Framework:** PyTorch
-* **Computer Vision Tools:** Torchvision, PIL (Pillow), timm
-* **Data Processing Suite:** NumPy, Pandas, Scikit-Learn
-* **Visual Diagnostics:** Matplotlib, Seaborn
-
----
 
 ## Model Architecture & Preprocessing
 
@@ -24,7 +15,7 @@ To prepare medical images for deep learning inference, scans are processed throu
 * **Tensor Conversion:** Image structures are scaled from standard pixel ranges down to tensor values falling between $0.0$ and $1.0$.
 * **Distribution Scaling:** Pixels undergo standard ImageNet mean and standard deviation scaling ($[\mu_R, \mu_G, \mu_B] = [0.485, 0.456, 0.406]$, $[\sigma_R, \sigma_G, \sigma_B] = [0.229, 0.224, 0.225]$) to stabilize initial gradients during fine-tuning.
 
----
+
 
 ## Model Training & Hyperparameters
 
@@ -35,7 +26,7 @@ The network was trained end-to-end using cross-entropy loss optimization. We par
 * **Batch Size:** 32
 * **Training Epochs:** 25
 
----
+
 
 ## Evaluation Metrics & Diagnostics
 
@@ -44,16 +35,5 @@ The classification engine maps its predictions using a normalized **Confusion Ma
 * **Diagnostic Transparency:** By evaluating the true label boundaries against predicted coordinates via Seaborn heatmaps, we can monitor specific error profiles—such as distinguishing challenging boundaries between gliomas and meningiomas.
 * **Performance Validation:** Normalized row vectors capture explicit classification sensitivity per pathological class.
 
----
 
-## Repository Structure
 
-```text
-├── data/
-│   ├── raw/         <- Source MRI scan structure downloads
-│   └── processed/   <- Normalized tensor datasets
-├── notebooks/
-│   └── brain_tumor_mri_classification.ipynb <- Preprocessing, training loops, and evaluation
-├── plots/           <- Exported model diagnostic graphics (Confusion Matrix heatmaps)
-├── README.md        <- Executive overview and setup documentation
-└── requirements.txt <- Pinpointed python dependency manifests
